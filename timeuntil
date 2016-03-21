@@ -6,11 +6,6 @@ if [ $# != $minargs ]; then
     exit 1
 fi
 
-wrap() {
-      eval "$@"
-        SUM_EXIT=$(($SUM_EXIT+$?))
-    }
-
 function displaytime {
     local T=$1
     local D=$((T/60/60/24))
@@ -24,6 +19,6 @@ function displaytime {
     printf '%ds\n' $S
 }
 
-wrap curdate="$(date -u -d @$(($(date --date="$1" +%s)-$(date +%s))) +"%s")"
-wrap displaytime "$curdate"
+curdate="$(date -u -d @$(($(date --date="$1" +%s)-$(date +%s))) +"%s")"
+displaytime "$curdate"
 exit $SUM_EXIT
