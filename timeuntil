@@ -21,4 +21,3 @@ function displaytime {
 
 curdate="$(date -u -d @$(($(date --date="$1" +%s)-$(date +%s))) +"%s")"
 displaytime "$curdate"
-exit $SUM_EXIT
