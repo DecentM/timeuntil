@@ -16,8 +16,8 @@ function displaytime {
     [[ $H > 0 ]] && printf '%dh ' $H
     [[ $M > 0 ]] && printf '%dm ' $M
     [[ $D > 0 || $H > 0 || $M > 0 ]]
-    printf '%ds\n' $S
+    printf '%ds' $S
 }
 
 curdate="$(date -u -d @$(($(date --date="$1" +%s)-$(date +%s))) +"%s")"
-displaytime "$curdate"
+printf "$(date --date="$1") is $(displaytime "$curdate") away.\n"
